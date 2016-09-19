@@ -11,3 +11,5 @@ Thumbs.db
 _site/
 .sass-cache/
 .jekyll-metadata
+**/.xxxx-xx-xx-xx.md
+**/tip.txt
