@@ -1,7 +1,7 @@
 ---
 layout: post
 category : lessons
-tagline: "Targe学习之道"
+tagline : "Targe学习之道"
 tags : [intro, beginner, jekyll, tutorial]
 ---
 {% include JB/setup %}
