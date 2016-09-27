@@ -2,6 +2,13 @@
 	margin: 0;
 	padding: 0;
 } 
+h1 { font-size: 2em; }
+
+h2 { font-size: 1.5em;  margin-top: 40px; margin-bottom: 20px;}
+
+h3 { font-size: 1em;  margin-bottom: 15px; margin-top: 15px;}
+
+h4 { font-size: 1em; margin-bottom: 10px; margin-top: 10px;}
 #container {
 	margin: auto 0;
 	padding: 0;
@@ -104,28 +111,23 @@ table tr { border-top: 1px solid #ccc; background-color: #fff; vertical-align: i
 table td { border: 1px solid #ddd; padding: 6px 13px; }
 table pre { margin-bottom: 0; }
 p { line-height: 1.8; }
-pre, code { font-size: 15px; border-radius: 3px; background-color: #edf9ff; }
+pre, code { 
+    font-size: 15px; 
+    border-radius: 3px; 
+}
 
-code { padding: 1px 5px; }
+code { 
+    padding: 1px 5px; 
+    background-color: #edf9ff;
+}
 
-pre { padding: 8px 12px; border: 1px solid #B4DCED; word-wrap: break-word; }
-pre > code { border: 0; padding-right: 0; padding-left: 0; }p { line-height: 1.8; }
-pre, code { font-size: 15px; border-radius: 3px; background-color: #edf9ff; }
+pre { padding: 8px 12px; border: 1px solid #B4DCED; word-wrap: break-word; background-color: black;}
+pre > code { border: 0; padding-right: 0; padding-left: 0; background-color: black;}
 
-code { padding: 1px 5px; }
+blockquote { color: #ababab; border-left: 2px solid #dedede; padding-left: 20px; letter-spacing: -1px; font-style: italic; }
+blockquote > :last-child { margin-bottom: 0; }
 
-pre { padding: 8px 12px; border: 1px solid #B4DCED; word-wrap: break-word; }
-pre > code { border: 0; padding-right: 0; padding-left: 0; }p { line-height: 1.8; }
-pre, code { font-size: 15px; border-radius: 3px; background-color: #edf9ff; }
 
-code { padding: 1px 5px; }
 
-pre { padding: 8px 12px; border: 1px solid #B4DCED; word-wrap: break-word; }
-pre > code { border: 0; padding-right: 0; padding-left: 0; }
-p { line-height: 1.8; }
-pre, code { font-size: 15px; border-radius: 3px; background-color: #edf9ff; }
 
-code { padding: 1px 5px; }
 
-pre { padding: 8px 12px; border: 1px solid #B4DCED; word-wrap: break-word; }
-pre > code { border: 0; padding-right: 0; padding-left: 0; }
