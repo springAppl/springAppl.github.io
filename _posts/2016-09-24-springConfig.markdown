@@ -55,11 +55,12 @@ public class MockConfiguration{
 
 #### 实用的Annotation  
 
-1. @ComponentScan  
+1 @ComponentScan  
 
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;@ComponentScan对应XML配置形式中的`<cotext:component-scan/>`用户配合java注解，它的作用就是告诉springIoC容器，这些注解在什么地方。用户可以通过basePackages等属性来细粒度的定制@ComponentScan自动扫描的范围，如果不指定，则默认Spring框架实现会从声明@ComponentScan所在类的Package进行扫描。  
 
-2. @PropertySource与@PropertySources
+2 @PropertySource与@PropertySources  
+
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;@PropertySource用于从某些地方加载*.properties文件的内容，并将其中的属性加载到IoC容器当中，便于填充一些bean定义属性的占位符（placeholder），当然这需要PropertySourcesPlaceholderConfiguer的配合。如果用户采用的是Java8或者更高版本，那么可以并行声明多个@PropertySource：  
 
 {% highlight java %}
@@ -86,7 +87,7 @@ public class XConfiguration{
 }
 {% endhighlight %}  
 
-3. @Import与@ImportResource  
+3 @Import与@ImportResource  
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;在XML形式的配置中，用户通过`<import resource="XXX.xml"/>`的形式将多个分开的容器组织到一个配置当中，在javaConfig的形式中，可以通过@Import完成相同的目的：  
 {% highlight java %}
 @Configuration
@@ -95,7 +96,8 @@ public class XConfiguration{
 
 }
 {% endhighlight %}  
-但是正常情况下，没人这么做，一般都是配置一个@ComponentScan，将其它配置类自动扫描进来，所以了解这个注解的存在就可以了。
+但是正常情况下，没人这么做，一般都是配置一个@ComponentScan，将其它配置类自动扫描进来，所以了解这个注解的存在就可以了。  
+
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;如果有一些遗留系统需要以XML形式来配置（比如dubbo），可以通过@ImportResource将XML形式的配置导入到IoC容器当中：  
 {% highlight java %}
 @Configuration

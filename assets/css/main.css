@@ -2,6 +2,10 @@
 	margin: 0;
 	padding: 0;
 } 
+.visually-hidden { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+h1, h2, h3, h4 {
+    color: #ba3925;
+}
 h1 { font-size: 2em; }
 
 h2 { font-size: 1.5em;  margin-top: 40px; margin-bottom: 20px;}
@@ -12,7 +16,7 @@ h4 { font-size: 1em; margin-bottom: 10px; margin-top: 10px;}
 #container {
 	margin: auto 0;
 	padding: 0;
-	background-color: greenyellow;
+	background-color: white;
 }
 #header {
 	
@@ -40,10 +44,13 @@ h4 { font-size: 1em; margin-bottom: 10px; margin-top: 10px;}
 #space {
 	height: 1px;
 	background-color: white;
+    padding: 0;
+    margin: 0;
 }
 #leftDown {
     height: 726px;
-	overflow: scroll;
+	overflow-y: scroll;
+    padding-top: 50px;
 }
 .liquidStr {
 	position: relative;
@@ -62,16 +69,18 @@ h4 { font-size: 1em; margin-bottom: 10px; margin-top: 10px;}
 	position: relative;
 	margin: auto 10%;
 	margin-top: 100px;
+    background-color: white;
 }
 a { text-decoration:none; 
 	color:#333
 }
 #postList {
 	position: relative;
-	left: 50%;
-	margin-top: 30px;
-	margin-left: -50px;
-    margin-bottom: 200px;
+	left: 0;
+    top: 0;
+    width: 20%;
+    margin-top: 0;
+    margin-left: 70px;
 }
 ul {
     
@@ -87,6 +96,7 @@ ul {
     text-decoration: none; 
     color: #ffffff; 
     margin-bottom: 30px;
+    margin-top: 0;
 }
 li a {
     position: relative;
@@ -114,6 +124,7 @@ p { line-height: 1.8; }
 pre, code { 
     font-size: 15px; 
     border-radius: 3px; 
+    overflow-x: scroll;
 }
 
 code { 
