@@ -6,7 +6,7 @@ title: connect framework
 
 ---
 
-# 本文引用自SpringBoot微服务架构，请购买正版。  
+  
 
 ## 2 Connect Framework  
 

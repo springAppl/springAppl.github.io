@@ -7,7 +7,7 @@ title: Signing in
 ---
 
 
-# 本文引用自SpringBoot微服务架构，请购买正版。 
+
 
 ## 4. Signing in with Service Provider Accounts  
 
