@@ -3,7 +3,40 @@
 layout: default
 
 ---
-<article>
+<aside>
+  <div class="aside--fix">
+	<div id="leftUp">
+		  <!--
+		  <a href="{{site.url}}/index.html">
+			  
+		  </a>
+          -->
+		  <div class="liquidStr">
+			{{ page.categories[0]  }}  
+		</div>
+	</div>
+	<div id="space"></div>
+	<div id="leftDown">
+		<div class="leftdown--space"></div>
+		<div>
+			{% assign section = page.categories[0] %} 
+			    <ul >
+				{% for item in site.posts %} 
+				  {% assign temp = section | append: "/" %} 
+				  {% if item.url contains temp %}
+					<li>
+						<a href="{{ item.url }}">
+						  {{ item.title }}
+						</a>
+					</li>
+				  {% endif %} 
+				{% endfor %}
+			   </ul>
+		</div>
+	</div>	
+  </div>
+</aside>
+<article class="right">
 	<header>
 		<h1>{{page.title}}</h1>
 		<p></p>
@@ -14,11 +47,11 @@ layout: default
 	<footer>
 		<p>未经允许谢绝转载</p>
         <span id="qqLoginBtn"></span>
-<script type="text/javascript">
-    QC.Login({
-       btnId:"qqLoginBtn"	//插入按钮的节点id
-});
-</script>
+		<script type="text/javascript">
+			QC.Login({
+			   btnId:"qqLoginBtn"	//插入按钮的节点id
+			});
+		</script>
 	</footer>
 	</div>
 </article>

@@ -27,8 +27,8 @@ nav {
 }
 article {
 	min-height: 700px;
-    float: right;
-    width: 70%;
+    float: left;
+    width: 79%;
     padding: 0 5%;
 }
 article header {
@@ -42,15 +42,18 @@ footer {
 }
 aside {
 	float: left;
-    position: fixed;
-	width: 20%;
+	width: 21%;
     height: 100%;
-	background-color: #3399CC;
     margin: 0;
     padding: 0;
 }
+.aside--fix {
+	position: fixed;
+	background-color: #3399CC;
+}
 #leftUp {
 	height: 150px;
+	text-align: center;
 }
 #space {
 	height: 1px;
@@ -58,21 +61,17 @@ aside {
     padding: 0;
     margin: 0;
 }
+.leftdown--space {
+	height: 50px;
+	width: auto;
+}
 #leftDown {
     height: 726px;
 	overflow-y: scroll;
-    padding-top: 50px;
 }
 .liquidStr {
-	position: relative;
-	top: 50%;
-	left: 50%;
-	margin-top: -35px;
-	margin-left: -85px;
-    font-size: 36px;
-    font-weight: bold;
-}
-.liquidStr a {
+	font-size: 30px;
+	line-height: 130px;
     color: #ffffff;
     text-decoration: none;
 }
@@ -81,19 +80,12 @@ aside {
 	position: relative;
     background-color: white;
 }
-a { text-decoration:none; 
+a { 
+	text-decoration:none; 
 	color:#333
 }
-#postList {
-	position: relative;
-	left: 0;
-    top: 0;
-    width: 20%;
-    margin-top: 0;
-    margin-left: 70px;
-}
 ul {
-    
+    margin-left: 55px;
 	list-style:none;
     width: 200px;
     margin-bottom: 40px;
@@ -114,7 +106,6 @@ li a {
     color: #ffffff;
     font-size: 1.3em;
     font-weight: normal;
-    text-align: center;
     opacity: 0.75;
     display: inline-block; 
     margin-top: 10px;

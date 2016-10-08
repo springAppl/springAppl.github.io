@@ -1,7 +1,7 @@
 ---
 
 layout: post
-category: spring
+category: springframework
 title: profile
 
 ---
@@ -32,7 +32,7 @@ public class TestConfigurtion{
 	
 	......
 }
-{% endhightlight  %}  
+{% endhighlight  %}  
 
 #### @Bean级别  
 
@@ -60,7 +60,7 @@ public class DataSourceTest{
 
 }
 
-{% endhightlight %}  
+{% endhighlight %}  
 
 我个人推荐大家采用第一种的配置方式,因为如果采用第二种的花中感觉配置很乱.
 配置的选择方式将完了.spring是通过spring.profiles.active和spring.profiles.default这连个参数配置来指定当前的环境的.

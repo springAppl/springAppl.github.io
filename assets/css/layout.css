@@ -24,3 +24,10 @@
 .space {
 	margin-bottom: 10px;
 }
+.project-block {
+	color: black;
+}
+.project-block:hover {
+	color: black;
+	text-decoration: none;
+}
