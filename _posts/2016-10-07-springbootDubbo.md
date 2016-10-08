@@ -2,11 +2,11 @@
 
 layout: post
 title: dubboService
-category: springboot
+category: terminus
 
 ---  
 
-# Dubbo  
+## Dubbo  
 
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Dubbo是一个分布式服务框架。这是dubbo的官方定义，可以知道两个信息，dubbo本质上是一个服务框架，但有一个很重要的特点，它可以做分布式服务。本文只研究dubbo作为服务框架的作用。  
 
