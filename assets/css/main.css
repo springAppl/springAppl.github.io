@@ -80,10 +80,6 @@ aside {
 	position: relative;
     background-color: white;
 }
-a { 
-	text-decoration:none; 
-	color:#333
-}
 ul {
     margin-left: 55px;
 	list-style:none;
