@@ -1,9 +1,10 @@
 ---
 
 layout: post
-category: filters
-title: hello1
+category: terminus
+title: formyself
 
 ---
 
-## voerview
+## voerview  
+不要愚蠢,不要熬夜,什么时候都保持平静.
