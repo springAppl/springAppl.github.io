@@ -196,3 +196,167 @@ public interface BeanNameAware extends Aware {
 设置在Bean facotry中的名字。
 进过上面的分析有用的大概就是找到“org.mybatis.spring.mapper.MapperFactoryBean”类型的bean，然后将BeanClass替换为本公司自己的MapperFactoryBean.
 并且加入了mapperHelper和pageHelper了。感觉线索又断了。
+那就分析MyBatis吧。
+{% highlight java %}
+    public static void main(String[] arg)throws Exception{
+        InputStream inputStream = Resources.getResourceAsStream("mybatis.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+            Blog temp = new Blog();
+            temp.setId(1l);
+            Map<String, Object> map = new HashMap();
+            map.put("blog", temp);
+            Blog blog = (Blog) session.selectOne("org.liu.mybatis.mapper.BlogMapper.selectOne", map);
+            System.out.println(blog.getContent());
+        } finally {
+            session.close();
+        }
+    }
+{% endhighlight %}
+
+这段代码非常简单首先从SqlSessionFactory开始：
+{% highlight java %}
+public interface SqlSessionFactory {
+
+  SqlSession openSession();
+
+  SqlSession openSession(boolean autoCommit);
+  SqlSession openSession(Connection connection);
+  SqlSession openSession(TransactionIsolationLevel level);
+
+  SqlSession openSession(ExecutorType execType);
+  SqlSession openSession(ExecutorType execType, boolean autoCommit);
+  SqlSession openSession(ExecutorType execType, TransactionIsolationLevel level);
+  SqlSession openSession(ExecutorType execType, Connection connection);
+
+  Configuration getConfiguration();
+
+}
+{% endhightlight  %}
+SqlSessionFactory非常简单，只是一个接口，定义了获取Session的各种方式。
+SqlSession:
+{% highlight java %}
+public interface SqlSession extends Closeable {
+
+  <T> T selectOne(String statement);
+
+  <T> T selectOne(String statement, Object parameter);
+
+  <E> List<E> selectList(String statement);
+
+  <E> List<E> selectList(String statement, Object parameter);
+
+  <E> List<E> selectList(String statement, Object parameter, RowBounds rowBounds);
+
+  <K, V> Map<K, V> selectMap(String statement, String mapKey);
+
+  <K, V> Map<K, V> selectMap(String statement, Object parameter, String mapKey);
+
+  <K, V> Map<K, V> selectMap(String statement, Object parameter, String mapKey, RowBounds rowBounds);
+  
+  <T> Cursor<T> selectCursor(String statement);
+
+  <T> Cursor<T> selectCursor(String statement, Object parameter);
+  
+  <T> Cursor<T> selectCursor(String statement, Object parameter, RowBounds rowBounds);
+
+  void select(String statement, Object parameter, ResultHandler handler);
+
+  void select(String statement, ResultHandler handler);
+
+  void select(String statement, Object parameter, RowBounds rowBounds, ResultHandler handler);
+
+  int insert(String statement);
+
+  int insert(String statement, Object parameter);
+
+  int update(String statement);
+
+  int update(String statement, Object parameter);
+
+  int delete(String statement);
+
+  int delete(String statement, Object parameter);
+
+  void commit();
+
+  void commit(boolean force);
+
+  void rollback();
+
+  void rollback(boolean force);
+
+  List<BatchResult> flushStatements();
+
+  @Override
+  void close();
+
+  void clearCache();
+
+  Configuration getConfiguration();
+  <T> T getMapper(Class<T> type);
+  Connection getConnection();
+}
+{% endhighlight %}
+也只是定义了一些增删改查的方法，看来重点就是这些方法的实现了。
+SqlSessionFactory的默认实现是DefaultSqlSessionFactory
+SqlSession的默认实现是DefaulSqlSession
+{% highlight java %}
+public class DefaultSqlSession implements SqlSession {
+
+  private Configuration configuration;
+  private Executor executor;
+
+  private boolean autoCommit;
+  private boolean dirty;
+  private List<Cursor<?>> cursorList;
+
+  public DefaultSqlSession(Configuration configuration, Executor executor, boolean autoCommit) {
+    this.configuration = configuration;
+    this.executor = executor;
+    this.dirty = false;
+    this.autoCommit = autoCommit;
+  }
+}
+{% endhighlight %}
+重要的参数是Configuration, Executor.
+Configuration正如其名，就是一个配置类，配置类类各种配置，比如用什么日志，连接类型是jdbc还是jndi等等，非常多。
+Executor :
+{% highlight java %}
+public interface Executor {
+
+  ResultHandler NO_RESULT_HANDLER = null;
+
+  int update(MappedStatement ms, Object parameter) throws SQLException;
+
+  <E> List<E> query(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, CacheKey cacheKey, BoundSql boundSql) throws SQLException;
+
+  <E> List<E> query(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler) throws SQLException;
+
+  <E> Cursor<E> queryCursor(MappedStatement ms, Object parameter, RowBounds rowBounds) throws SQLException;
+
+  List<BatchResult> flushStatements() throws SQLException;
+
+  void commit(boolean required) throws SQLException;
+
+  void rollback(boolean required) throws SQLException;
+
+  CacheKey createCacheKey(MappedStatement ms, Object parameterObject, RowBounds rowBounds, BoundSql boundSql);
+
+  boolean isCached(MappedStatement ms, CacheKey key);
+
+  void clearLocalCache();
+
+  void deferLoad(MappedStatement ms, MetaObject resultObject, String property, CacheKey key, Class<?> targetType);
+
+  Transaction getTransaction();
+
+  void close(boolean forceRollback);
+
+  boolean isClosed();
+
+  void setExecutorWrapper(Executor executor);
+
+}
+{% endhighlight %}
