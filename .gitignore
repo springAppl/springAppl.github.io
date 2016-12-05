@@ -15,3 +15,5 @@ _site/
 **/*.txt
 _posts/**/img/
 **/xxxx-xx-xx-template.md
+*.swp
+*.swo
