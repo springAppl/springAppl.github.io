@@ -233,7 +233,7 @@ public interface SqlSessionFactory {
   Configuration getConfiguration();
 
 }
-{% endhightlight  %}
+{% endhighlight  %}
 SqlSessionFactory非常简单，只是一个接口，定义了获取Session的各种方式。
 SqlSession:
 {% highlight java %}
